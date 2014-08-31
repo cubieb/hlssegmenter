@@ -16,7 +16,7 @@ protected:
 	std::string playlist_name;
 	std::string playlist_url;
 
-	Playlist playlist;
+	Playlist *playlist;
 
 public:
 	//PlaylistInterface();

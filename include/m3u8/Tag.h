@@ -25,6 +25,12 @@ public:
 			output_format = std::string("#EXT-X-");
 	};
 
+	~Tag()
+	{
+		for(auto it = properties.begin(), ite = properties.end(); it != ite; it++)
+			delete(*it);
+	};
+
 	std::string get_name()
 	{
 		return id;

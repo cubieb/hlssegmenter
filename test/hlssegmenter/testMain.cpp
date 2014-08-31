@@ -17,10 +17,10 @@ int main(int argc, char *argv[])
 	 * Set the input config parameters
 	 */
 	ConfigParams config;
-	//config.playlist_type = EVENT;
+	config.playlist_type = EVENT;
 
-	config.playlist_type = LIVE;
-	config.sliding_window_duration_ms = 40000;
+//	config.playlist_type = LIVE;
+//	config.sliding_window_duration_ms = 40000;
 
 	config.segment_duration_ms = 5000;
 	config.web_server_url = "http://10.121.1.63:80/hlschunks/";
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
         infile.close();
         hls_segmenter.finalize_playlist();
     }
-    delete inp_buffer;
+    delete[] inp_buffer;
 
 	return 0;
 }

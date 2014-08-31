@@ -13,7 +13,7 @@
 VideoStream::VideoStream()
 {
 	mycat = log4c_category_get("tsparser.elementarystream");
-	prev = NULL;
+	prev = nullptr;
 }
 
 VideoStream::~VideoStream()
@@ -100,7 +100,7 @@ void VideoPktInfo::set_prev(VideoPktInfo *prev)
 {
 	duration_pts_ms = 0;
 	duration_dts_ms = 0;
-	if(prev != NULL)
+	if(prev != nullptr)
 	{
 		duration_pts_ms = (unsigned int)((pts - prev->pts)/TS_TIMESCALE_MILLISEC);
 		duration_dts_ms = (unsigned int)((dts - prev->dts)/TS_TIMESCALE_MILLISEC);

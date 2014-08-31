@@ -16,7 +16,11 @@ class Playlist {
 	std::ostringstream oss;
 public:
 	Playlist(){};
-	virtual ~Playlist(){};
+	virtual ~Playlist()
+	{
+		for(auto it = section_list.begin(), ite = section_list.end(); it != ite; it++)
+			delete(*it);
+	};
 
 	void add_section(Section &s)
 	{

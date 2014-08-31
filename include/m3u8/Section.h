@@ -19,7 +19,11 @@ class Section {
 
 public:
 	Section(std::string name):id(name){};
-	virtual ~Section(){};
+	virtual ~Section()
+	{
+		for(auto it = tags.begin(), ite = tags.end(); it != ite; it++)
+			delete(*it);
+	};
 
 //	//copy assignemnt
 //	Section & operator=(const Section &other) = default;

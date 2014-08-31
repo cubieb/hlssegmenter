@@ -1,21 +1,21 @@
 /*
- * IFramePlaylist.cpp
+ * IFrameplaylist->cpp
  *
  *  Created on: Aug 6, 2014
  *      Author: satram
  */
 
-#include "IFramePlaylist.h"
+#include "IFrameplaylist->h"
 #include "IFrameIndex.h"
-#include "VariantPlaylist.h"
+#include "Variantplaylist->h"
 
 IFramePlaylist::IFramePlaylist() {
-	// TODO Auto-generated constructor stub
+	playlist = new Playlist();
 
 }
 
 IFramePlaylist::~IFramePlaylist() {
-	// TODO Auto-generated destructor stub
+	delete playlist;
 }
 
 
@@ -37,10 +37,10 @@ void IFramePlaylist::update_node(IFrameIndex *index, VariantPlaylist *variant_pl
 		node.add_tag("BYTERANGE", oss.str());
 		node.set_path(variant_playlist->transcoded_output_url);
 		node.set_locator(variant_playlist->transcoded_output_filename);
-		playlist.add_section(node);
+		playlist->add_section(node);
 	}
 	else
-		playlist.delete_section(oss.str());
+		playlist->delete_section(oss.str());
 }
 
 
@@ -51,14 +51,14 @@ void IFramePlaylist::add_header(variant_stream_info &stream_info)
 	header.add_tag("M3U");
 	header.add_tag("VERSION", 4);
 	header.add_tag("I-FRAMES-ONLY");
-	playlist.add_section(header);
+	playlist->add_section(header);
 }
 
 void IFramePlaylist::add_footer()
 {
 	Section footer ("footer");
 	footer.add_tag("ENDLIST");
-	playlist.add_section(footer);
+	playlist->add_section(footer);
 }
 
 void IFramePlaylist::finalize_playlist()

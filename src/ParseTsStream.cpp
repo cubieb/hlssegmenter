@@ -24,6 +24,9 @@ ParseTsStream::ParseTsStream()
     video_pkt_profiler = Profiler("vidpkt_parsing");
     audio_pkt_profiler = Profiler("audpkt_parsing");
 
+    pmt_pid = 0;
+    video_pid = 0;
+    audio_pid = 0;
 }
 
 
@@ -166,7 +169,8 @@ void ParseTsStream::parse_bytestream()
 
 void ParseTsStream::update_pid_list(int & pid)
 {
-    std::map<int,int>::iterator it = pid_list.find(pid);
+    std::map<int,int>::iterator it = pid_list.end();
+    it = pid_list.find(pid);
     int count = 0;
     if(it != pid_list.end()){
         count = it->second;
